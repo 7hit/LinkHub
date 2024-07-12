@@ -1,12 +1,24 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using LinkHub.Core.Types;
 
 namespace LinkHub.Core.Entities;
 
-public class Device
+[Table("Devices")]
+public class Device : Base
 {
+    [Required]
     public Guid Id { get; set; }
+    
+    [Required]
     public string Name { get; set; }
-    public string Location { get; set; }
+    
+    [Required]
     public DeviceType Type { get; set; }
+    
+    public string Location { get; set; }
+    
     public DeviceStatus Status { get; set; }
+    
+    public List<Component> Components { get; set; }
 }
