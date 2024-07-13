@@ -51,6 +51,22 @@ namespace LinkHub.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Devices",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Type = table.Column<int>(type: "INTEGER", nullable: false),
+                    Location = table.Column<string>(type: "TEXT", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Devices", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -156,6 +172,25 @@ namespace LinkHub.Api.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Blocks",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    DeviceId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Blocks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Blocks_Devices_DeviceId",
+                        column: x => x.DeviceId,
+                        principalTable: "Devices",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -192,6 +227,11 @@ namespace LinkHub.Api.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Blocks_DeviceId",
+                table: "Blocks",
+                column: "DeviceId");
         }
 
         /// <inheritdoc />
@@ -213,10 +253,16 @@ namespace LinkHub.Api.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Blocks");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Devices");
         }
     }
 }

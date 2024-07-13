@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinkHub.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240712180437_InitialCreate")]
+    [Migration("20240713184451_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -110,6 +110,57 @@ namespace LinkHub.Api.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("LinkHub.Core.Entities.Block", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("DeviceId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeviceId");
+
+                    b.ToTable("Blocks");
+                });
+
+            modelBuilder.Entity("LinkHub.Core.Entities.Device", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Devices");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -211,6 +262,13 @@ namespace LinkHub.Api.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("LinkHub.Core.Entities.Block", b =>
+                {
+                    b.HasOne("LinkHub.Core.Entities.Device", null)
+                        .WithMany("Components")
+                        .HasForeignKey("DeviceId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.HasOne("LinkHub.Api.Entities.AppRole", null)
@@ -260,6 +318,11 @@ namespace LinkHub.Api.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("LinkHub.Core.Entities.Device", b =>
+                {
+                    b.Navigation("Components");
                 });
 #pragma warning restore 612, 618
         }
