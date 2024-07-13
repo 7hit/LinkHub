@@ -9,7 +9,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     : IdentityDbContext<AppUser, AppRole, Guid>(options)
 {
     public DbSet<Device> Devices { get; set; }
-    public DbSet<Component> Components { get; set; }
+    public DbSet<Block> Components { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

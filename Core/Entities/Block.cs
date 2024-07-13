@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LinkHub.Core.Entities;
 
-[Table("Components")]
-public class Component : Base
+[Table("Blocks")]
+public class Block : Base
 {
     [Required]
     public Guid Id { get; set; }

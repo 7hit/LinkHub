@@ -20,5 +20,5 @@ public class Device : Base
     
     public DeviceStatus Status { get; set; }
     
-    public List<Component> Components { get; set; }
+    public List<Block> Components { get; set; }
 }

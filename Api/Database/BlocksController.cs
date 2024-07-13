@@ -4,7 +4,7 @@ namespace LinkHub.Api.Database;
 
 [ApiController]
 [Route("[controller]")]
-public class ComponentsController : ControllerBase
+public class BlocksController : ControllerBase
 {
     
 }
