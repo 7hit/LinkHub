@@ -6,5 +6,4 @@ namespace LinkHub.Api.Database;
 [Route("[controller]")]
 public class BlocksController : ControllerBase
 {
-    
 }
