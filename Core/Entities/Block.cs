@@ -1,14 +1,9 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
 namespace LinkHub.Core.Entities;
 
-[Table("Blocks")]
-public class Block : Base
+public class Block
 {
-    [Required]
     public Guid Id { get; set; }
-
-    [Required]
     public string Name { get; set; }
 }
