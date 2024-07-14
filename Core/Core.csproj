@@ -7,9 +7,10 @@
         <AssemblyName>LinkHub.Core</AssemblyName>
         <RootNamespace>LinkHub.Core</RootNamespace>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>1.0.0-alpha1</Version>
+        <Version>1.0.0-alpha.3</Version>
         <Title>LinkHub.Core</Title>
-        <Authors>7hit</Authors>
+        <Authors>Žiga Maj Špiler</Authors>
+        <Company>7hit</Company>
         <Copyright>GNU AGPLv3</Copyright>
         <PackageProjectUrl>https://github.com/7hit/LinkHub</PackageProjectUrl>
         <PackageIcon>lh_symbol_128.png</PackageIcon>
@@ -17,13 +18,16 @@
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <Description>Core functional entities of LinkHub</Description>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
     
     <ItemGroup>
-        <None Include="../LICENSE" Pack="true" Visible="false" PackagePath="" />
+        <None Include="../LICENSE" Pack="true" Visible="true" PackagePath="" />
+        <None Include="./README.md" Pack="true" PackagePath="" />
         <None Include="..\Resources\lh_symbol_128.png">
           <Pack>True</Pack>
-          <PackagePath></PackagePath>
+          <!--suppress CheckTagEmptyBody -->
+            <PackagePath></PackagePath>
           <Link>lh_symbol_128.png</Link>
         </None>
     </ItemGroup>
