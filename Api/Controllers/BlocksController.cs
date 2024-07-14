@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace LinkHub.Api.Database;
+namespace LinkHub.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]

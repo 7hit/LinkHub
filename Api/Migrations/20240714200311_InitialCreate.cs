@@ -51,19 +51,39 @@ namespace LinkHub.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Devices",
+                name: "DeviceOptions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Type = table.Column<int>(type: "INTEGER", nullable: false),
-                    Location = table.Column<string>(type: "TEXT", nullable: false),
-                    Status = table.Column<int>(type: "INTEGER", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Devices", x => x.Id);
+                    table.PrimaryKey("PK_DeviceOptions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DeviceType",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeviceType", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Flows",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 32, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Flows", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -173,13 +193,38 @@ namespace LinkHub.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Devices",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 32, nullable: false),
+                    TypeId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Location = table.Column<string>(type: "TEXT", nullable: true),
+                    OptionsId = table.Column<Guid>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Devices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Devices_DeviceOptions_OptionsId",
+                        column: x => x.OptionsId,
+                        principalTable: "DeviceOptions",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Devices_DeviceType_TypeId",
+                        column: x => x.TypeId,
+                        principalTable: "DeviceType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Blocks",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    DeviceId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Name = table.Column<string>(type: "TEXT", maxLength: 32, nullable: false),
+                    DeviceId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -232,6 +277,16 @@ namespace LinkHub.Api.Migrations
                 name: "IX_Blocks_DeviceId",
                 table: "Blocks",
                 column: "DeviceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Devices_OptionsId",
+                table: "Devices",
+                column: "OptionsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Devices_TypeId",
+                table: "Devices",
+                column: "TypeId");
         }
 
         /// <inheritdoc />
@@ -256,6 +311,9 @@ namespace LinkHub.Api.Migrations
                 name: "Blocks");
 
             migrationBuilder.DropTable(
+                name: "Flows");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -263,6 +321,12 @@ namespace LinkHub.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "Devices");
+
+            migrationBuilder.DropTable(
+                name: "DeviceOptions");
+
+            migrationBuilder.DropTable(
+                name: "DeviceType");
         }
     }
 }

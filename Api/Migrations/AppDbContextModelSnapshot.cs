@@ -115,14 +115,12 @@ namespace LinkHub.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("TEXT");
-
                     b.Property<Guid?>("DeviceId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(32)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -138,26 +136,75 @@ namespace LinkHub.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Location")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(32)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("INTEGER");
+                    b.Property<Guid?>("OptionsId")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("INTEGER");
+                    b.Property<Guid>("TypeId")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OptionsId");
+
+                    b.HasIndex("TypeId");
+
                     b.ToTable("Devices");
+                });
+
+            modelBuilder.Entity("LinkHub.Core.Entities.DeviceOptions", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeviceOptions");
+                });
+
+            modelBuilder.Entity("LinkHub.Core.Entities.DeviceType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeviceType");
+                });
+
+            modelBuilder.Entity("LinkHub.Core.Entities.Flow", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Flows");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -262,8 +309,25 @@ namespace LinkHub.Api.Migrations
             modelBuilder.Entity("LinkHub.Core.Entities.Block", b =>
                 {
                     b.HasOne("LinkHub.Core.Entities.Device", null)
-                        .WithMany("Components")
+                        .WithMany("Blocks")
                         .HasForeignKey("DeviceId");
+                });
+
+            modelBuilder.Entity("LinkHub.Core.Entities.Device", b =>
+                {
+                    b.HasOne("LinkHub.Core.Entities.DeviceOptions", "Options")
+                        .WithMany()
+                        .HasForeignKey("OptionsId");
+
+                    b.HasOne("LinkHub.Core.Entities.DeviceType", "Type")
+                        .WithMany()
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Options");
+
+                    b.Navigation("Type");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -319,7 +383,7 @@ namespace LinkHub.Api.Migrations
 
             modelBuilder.Entity("LinkHub.Core.Entities.Device", b =>
                 {
-                    b.Navigation("Components");
+                    b.Navigation("Blocks");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,10 +9,13 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     : IdentityDbContext<AppUser, AppRole, Guid>(options)
 {
     public DbSet<Device> Devices { get; set; }
-    public DbSet<Block> Components { get; set; }
+    public DbSet<Block> Blocks { get; set; }
+    public DbSet<DeviceOptions> DeviceOptions { get; set; }
+    public DbSet<Flow> Flows { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        // TODO: Add database configuration
         optionsBuilder.UseSqlite("Data Source=lh-data.db");
     }
 }
