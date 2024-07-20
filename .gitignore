@@ -3,3 +3,5 @@ obj
 build
 .idea
 *.db
+.DS_store
+
