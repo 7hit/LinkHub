@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>LinkHub.Core</AssemblyName>
+        <RootNamespace>LinkHub.Core</RootNamespace>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>1.0.0-alpha.4</Version>
+        <Title>LinkHub.Core</Title>
+        <Authors>Žiga Maj Špiler</Authors>
+        <Company>7hit</Company>
+        <Copyright>GNU AGPLv3</Copyright>
+        <PackageProjectUrl>https://github.com/7hit/LinkHub</PackageProjectUrl>
+        <PackageIcon>lh_symbol_128.png</PackageIcon>
+        <RepositoryUrl>https://github.com/7hit/LinkHub</RepositoryUrl>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <Description>Core functional entities of LinkHub</Description>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../LICENSE" Pack="true" Visible="true" PackagePath=""/>
+        <None Include="./README.md" Pack="true" PackagePath=""/>
+        <None Include="..\Resources\lh_symbol_128.png">
+            <Pack>True</Pack>
+            <!--suppress CheckTagEmptyBody -->
+            <PackagePath></PackagePath>
+            <Link>lh_symbol_128.png</Link>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Models\"/>
+        <Folder Include="Services\"/>
+    </ItemGroup>
+
+</Project>

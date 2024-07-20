@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{57FD12C1-8B59-47AC-B29A-6DBDA025306B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Projects\Core\Core.csproj", "{57FD12C1-8B59-47AC-B29A-6DBDA025306B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{6B95B92A-69D7-4D3F-97E6-4884723F8941}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Projects\Api\Api.csproj", "{6B95B92A-69D7-4D3F-97E6-4884723F8941}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{99938ACD-F8CD-4A9F-A625-DE7CC5A35093}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Projects\Extensions", "{99938ACD-F8CD-4A9F-A625-DE7CC5A35093}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaspberryPi", "Extensions\RaspberryPi\RaspberryPi.csproj", "{C5F26EC1-8AE2-43EE-82DC-23EA9EAE2026}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaspberryPi", "Projects\Extensions\RaspberryPi\RaspberryPi.csproj", "{C5F26EC1-8AE2-43EE-82DC-23EA9EAE2026}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
