@@ -8,12 +8,9 @@ public class Device
 {
     public Guid Id { get; set; }
 
-    [Required]
-    [MaxLength(32)]
-    public string Name { get; set; }
+    [Required] [MaxLength(32)] public string Name { get; set; }
 
-    [Required]
-    public DeviceType Type { get; set; }
+    [Required] public DeviceType Type { get; set; }
 
     public string? Location { get; set; }
 

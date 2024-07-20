@@ -1,6 +1,5 @@
 using LinkHub.Api.Database;
 using LinkHub.Api.Entities;
-using LinkHub.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
