@@ -1,12 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Projects\Core\Core.csproj", "{57FD12C1-8B59-47AC-B29A-6DBDA025306B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Projects\Api\Api.csproj", "{6B95B92A-69D7-4D3F-97E6-4884723F8941}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Projects\Extensions", "{99938ACD-F8CD-4A9F-A625-DE7CC5A35093}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaspberryPi", "Projects\Extensions\RaspberryPi\RaspberryPi.csproj", "{C5F26EC1-8AE2-43EE-82DC-23EA9EAE2026}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Projects\Api\Api.csproj", "{2B809BBE-091D-4F37-B2CF-8C770C79F0C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,20 +8,11 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{57FD12C1-8B59-47AC-B29A-6DBDA025306B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57FD12C1-8B59-47AC-B29A-6DBDA025306B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57FD12C1-8B59-47AC-B29A-6DBDA025306B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57FD12C1-8B59-47AC-B29A-6DBDA025306B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B95B92A-69D7-4D3F-97E6-4884723F8941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B95B92A-69D7-4D3F-97E6-4884723F8941}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B95B92A-69D7-4D3F-97E6-4884723F8941}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B95B92A-69D7-4D3F-97E6-4884723F8941}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5F26EC1-8AE2-43EE-82DC-23EA9EAE2026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5F26EC1-8AE2-43EE-82DC-23EA9EAE2026}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5F26EC1-8AE2-43EE-82DC-23EA9EAE2026}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5F26EC1-8AE2-43EE-82DC-23EA9EAE2026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B809BBE-091D-4F37-B2CF-8C770C79F0C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B809BBE-091D-4F37-B2CF-8C770C79F0C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B809BBE-091D-4F37-B2CF-8C770C79F0C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B809BBE-091D-4F37-B2CF-8C770C79F0C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C5F26EC1-8AE2-43EE-82DC-23EA9EAE2026} = {99938ACD-F8CD-4A9F-A625-DE7CC5A35093}
 	EndGlobalSection
 EndGlobal
